@@ -1,132 +1,602 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-	<title></title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Rating app</title>
 </head>
 <style>
-	body {
-	  margin-top: 50px;
-	  font-family: sans-serif;
-	  background: #f1f1f1;
-	}
+	@import url('https://fonts.googleapis.com/css?family=Lato');
+/*font-family: 'Lato', sans-serif;*/
+@import url('https://fonts.googleapis.com/css?family=Thasadith:400,400i,700,700i');
+/*font-family: 'Thasadith', sans-serif;*/
 
-	table {
-	  margin: 0 auto;
-	  text-align: center;
-	  border-collapse: collapse;
-	  border: 1px solid #d4d4d4;
-	  font-size: 20px;
-	  background: #fff;
-	}
+body{
+    background: rgb(3,15,13); /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(3,15,13,1) 2%, rgba(10,52,56,1) 52%, rgba(32,124,202,1) 52%, rgba(0,229,187,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(3,15,13,1) 2%,rgba(10,52,56,1) 52%,rgba(32,124,202,1) 52%,rgba(0,229,187,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(3,15,13,1) 2%,rgba(10,52,56,1) 52%,rgba(32,124,202,1) 52%,rgba(0,229,187,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#030f0d', endColorstr='#00e5bb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-repeat: no-repeat;
+    background-size: 100% 120%; 
+}
 
-	table th, 
-	table tr:nth-child(2n+2) {
-	  background: #e7e7e7;
-	}
-	 
-	table th, 
-	table td {
-	  padding: 20px 50px;
-	}
-	 
-	table th {
-	  border-bottom: 1px solid #d4d4d4;
-	}     
+/*Container of apps and menus*/
+.container{
+    background: rgb(87, 87, 87);
+    width: 80em;
+    height: 40em;
+    border: 1px solid black;
+    margin: 5em auto;
+}
+ /*Navigation bar and search bar*/
+.navbar{
+    height: 3.5em;
+    background: rgb(59, 59, 59);
+}
 
-	.stars-outer {
-	  display: inline-block;
-	  position: relative;
-	  font-family: FontAwesome;
-	}
+input[placeholder="search app"]{
+    float: right;
+    outline: none;
+    margin: 1em 1.5em;
+    height: 1.5em;
+}
 
-	.stars-outer::before {
-	  content: "\f006 \f006 \f006 \f006 \f006";
-	}
+a img[alt=menuIcon]{
+    margin:0.4em 1em;
+}
 
-	.stars-inner {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  white-space: nowrap;
-	  overflow: hidden;
-	  width: 0;
-	}
+nav a{
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+    color: rgb(2, 218, 218);
+}
 
-	.stars-inner::before {
-	  content: "\f005 \f005 \f005 \f005 \f005";
-	  color: #f8ce0b;
-	}
+img[alt="searchIcon"]{
+    display: none;
+}
 
-	.attribution {
-	  font-size: 12px;
-	  color: #444;
-	  text-decoration: none;
-	  text-align: center;
-	  position: fixed;
-	  right: 10px;
-	  bottom: 10px;
-	  z-index: -1;
-	}
-	.attribution:hover {
-	  color: #1fa67a;
-	}
+nav{
+    margin:-4em 5em;
+}
+
+nav ul li {
+    display: inline-block;
+    margin:0 1em;
+}
+
+/*App list design*/
+
+.app-list ul li{
+    list-style: none;
+}
+
+.app-list li{
+    background: rgb(49, 49, 49);
+    margin: 0 -2.5em;
+    width:80em;
+    height: 6em;
+    border-bottom:1px solid rgb(2, 218, 218); ;
+}
+
+.app-list li:hover{
+    background: rgb(56, 56, 56);
+}
+
+#rateMe{
+    font-size: 14px;
+    position: absolute;
+    margin: -25px 130px;
+    transform: rotateY(180deg);
+    font-family: 'Lato', sans-serif;
+    font-weight:inherit;
+}
+
+img[alt="appIcon"]{
+    vertical-align: middle;
+    padding-top: 15px;
+    border-radius: 50px;
+}
+
+figcaption{
+    margin:-0.9em 5em;
+    font-weight: bold;
+    color: white;
+    font-family: 'Thasadith', sans-serif;
+}
+
+.app-list a{
+    font-family: 'Lato', sans-serif;
+    color: rgb(2, 218, 218);
+    text-decoration: none;
+    font-size: 25px;
+    margin: 0 1em;
+}
+
+
+.app-list .rating{
+    margin: -3em 53em;
+    width: 20em;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+}
+
+.rating > .fa {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    color: white;
+    font-size:40px;
+    cursor:pointer;
+  }
+
+  .checked {
+  color: #FDE16D;;
+    
+}
+
+  .rating > .fa:hover,
+  .rating > .fa:hover  ~ .fa{
+    text-shadow: 0 0 9px rgba(238, 255, 0, 0.788);
+    color: #FDE16D;
+    content: '\2605'; /* Full star in UTF-8 */
+    position: relative;
+    left: 0;
+    }
+  
+    .fa.rated::before{
+        /* the :hover should come first */
+        content: '\2605';
+        color: #FDE16D;
+        font-size: 40px;
+      }
+
+.app-list li p{
+    color: white;
+    font-size: 30px;
+    float: right;
+    margin: 0.4em 2em;
+    font-family: 'Lato', sans-serif;
+}
+
+#description{
+    height: 4em;
+    color: white;
+    font-size: 126%;
+    width: 103.4%;
+    margin: 0 -2em;
+    font-family: 'Lato', sans-serif;
+}
+
+#designer{
+    font-size: 120%;
+}
+
+@media screen and (max-width:1307px){
+    .container{
+        width: 70em;
+    }
+
+    .app-list li{
+        width:70em;
+    }
+    
+  .app-list .rating{
+        margin: -3em 48em;
+    }
+
+    #description{
+        width: 103.8%;
+    }
+    
+}
+
+@media screen and (max-width:1150px){
+    .container{
+        width: 65em;
+    }
+
+    #description{
+        width: 104%;
+    }
+
+    figcaption{
+        margin:-1.5em 5em;
+       width: 30em;
+       font-size: 15px;
+    }
+
+    .app-list li{
+        width:65em;
+    }
+    
+  .app-list .rating{
+        margin: -3em 46em;
+    }  
+}
+
+
+@media screen and (max-width:1060px){
+    .container{
+        width: 60em;
+    }
+
+    figcaption{
+       font-size: 14px;
+    }
+
+    #description{
+        width: 104.4%;
+    }
+
+    .app-list li{
+        width:60em;
+    }
+    
+  .app-list .rating{
+        margin: -3em 42em;
+    }  
+}
+
+@media screen and (max-width:980px){
+    .container{
+        width: 90%;
+    }
+
+    .app-list li{
+        width:105%;
+    }
+    
+    #description{
+        width: 104.8%;;
+    }
+
+    .app-list .rating{
+        margin: -3em 62%;
+    }  
+
+    .rating > .fa { 
+        width: 1em;  
+      font-size: 30px;
+      }
+
+      nav a{
+        font-size: 22px;
+    }
+
+    nav{
+        margin:-3.7em 5em;
+    }
+
+}
+
+@media screen and (max-width:870px){
+    .container{
+        width: 95%;
+    }
+
+    .app-list li{
+        width:106%;
+    }
+
+    #description{
+        width: 106.2%;
+        height: 4.5em;
+    }
+
+}
+
+
+@media screen and (max-width:730px){
+    .app-list li{
+        width:106%;
+        height: 7em;
+    }
+    
+    .rating > .fa { 
+        width: 1em;  
+      font-size: 29px;
+      }
+
+      nav a{
+        font-size: 22px;
+    }
+
+    nav{
+        margin:-3.7em 5em;
+    }
+    figcaption{
+        font-size: 13px;
+        width: 25em;
+     }
+
+     nav{
+        margin:-3.7em 4em;
+    }
+
+    nav a{
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width:640px){
+    .container{
+        width: 100%;
+        margin: 3em -0.5%;
+    }
+
+    .app-list li{
+        width:107%;
+    }
+
+    #description{
+        width: 106.9%;
+        height: 4.5em;
+    }
+
+    .app-list .rating{
+        margin: -3em 58%;
+    } 
+
+    input[placeholder="search app"]{
+        display: none;
+    }
+
+    img[alt="searchIcon"]{
+        display: block;
+        float: right;
+        margin: 5px 10px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width:440px){
+    .container{
+        width: 102%;
+        margin: 3em -1.2%;
+    }
+
+    .app-list li{
+        width:109.8%;
+    }
+
+    .app-list .rating{
+        margin: -3em 47%;
+    } 
+    figcaption{
+        font-size: 10px;
+        width: 21em;
+        margin:-1.4em 6em;
+     }
+
+     #description{
+        width: 109.3%;
+        font-size: 116%;
+    }
+
+     nav{
+        margin:-3.7em 2em;
+    }
+
+    nav a{
+        font-size: 19px;
+        margin:0 -0.3em;
+    }
+
+    .rating > .fa { 
+        width: 1em;  
+      font-size: 22px;
+      }
+}
+
+@media screen and (max-width:414px){
+    .app-list .rating{
+        margin: -3em 45%;
+    } 
+
+    .app-list li{
+        width:111%;
+    }
+
+    #description{
+        width: 111%;
+        height: 4.5em;
+        font-size: 106%;
+        margin:0 -2.4em;
+    }
+}
+
+@media screen and (max-width:400px){
+    .rating > .fa { 
+        width: 0.9em;  
+      font-size: 20px;
+      }
+
+      .app-list li{
+        width:111%;
+    }
+
+    .app-list .rating{
+        margin: -3em 44%;
+    } 
+}
+
+@media screen and (max-width:380px){
+    .rating > .fa { 
+      font-size: 18px;
+      }
+
+      .app-list li{
+        width:112%;
+    }
+
+    .app-list .rating{
+        margin: -3em 40%;
+    } 
+
+    #description{
+        width: 111%;
+        height: 4.5em;
+        font-size: 100%;
+        margin:0 -2.4em;
+    }
+
+    figcaption{
+        font-size: 12px;
+        width: 15em;
+        margin:-1.4em 6em;
+     }
+
+     nav a{
+        font-size: 17px;
+        margin:0 -0.5em;
+    }
+}
+
+@media screen and (max-width:350px){
+    .rating > .fa { 
+      font-size: 17px;
+      }
+
+      .app-list li{
+        width:114%;
+    }
+
+    .app-list .rating{
+        margin: -2.6em 38%;
+    } 
+
+    figcaption{
+        font-size: 12px;
+        width: 14em;
+        margin:-2.2em 6em;
+     }
+
+     nav a{
+        font-size: 17px;
+        margin:0 -0.7em;
+    }
+}
 </style>
 <body>
-<table>
-  <thead>
-    <tr>
-      <th>Hotel</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="hotel_a">
-      <td>Hotel A</td>
-      <td>
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
+<div class="container">
+<!-- <div class="navbar">
+    <a href="#"><img src="https://i.ibb.co/Mgh8xXs/menu-arrow-512.png" alt="menuIcon" height="40" width="40"></a>
+    <input type="text" placeholder="search app"> 
+    <img src="https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/252/MB__search.png" alt="searchIcon" height="38" width="35">
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Apps</a></li>
+            <li><a href="#">Downloads</a></li>
+        </ul>
+    </nav>
+</div>
+<!--App list rating design
+<div class="app-list">
+<ul>
+        <li>
+            <img src="https://i.ibb.co/q1Lcz6b/badlandbrowl.png" alt="appIcon" height="60" width="60">
+            <a href="https://play.google.com/store/apps/details?id=com.frogmind.badlandbrawl&hl=en">Badland Browl</a>
+            <figcaption><i>Sling your Clones onto the battlefield! Master your timing and...</i></figcaption>
+          <div class="rating">
+            <span style=" color: #FDE16D;"  class="fa fa-star"></span>
+            <span style=" color: #FDE16D;" class="fa fa-star "></span>
+            <span style=" color: #FDE16D;" class="fa fa-star "></span>
+            <span style=" color: #FDE16D;" class="fa fa-star"></span>
+            <span style=" color: #FDE16D;" class="fa fa-star"></span>
         </div>
-      </td>
-    </tr>
-    <tr class="hotel_b">
-      <td>Hotel B</td>
-      <td>
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
-        </div>
-      </td>
-    </tr>
-    <tr class="hotel_c">
-      <td>Hotel C</td>
-      <td>
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
-        </div>
-      </td>
-    </tr>
-    <tr class="hotel_d">
-      <td>Hotel D</td>
-      <td>
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
-        </div>
-      </td>
-    </tr>
-    <tr class="hotel_e">
-      <td>Hotel E</td>
-      <td>
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<a class="attribution" href="http://fontawesome.io/"><i class="fa fa-font-awesome"></i> fontawesome.io</a>
-
-
+           
+        </li>
+        <li>
+            <img src="https://i.ibb.co/MN1c2Mw/clash-Royale.png" alt="appIcon" height="60" width="60">
+            <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans&hl=en">Clash of Clans</a>
+            <figcaption><i>Join millions of players worldwide as you build your village, raise a clan, and...</i></figcaption>
+            <div class="rating">
+                <span class="fa fa-star"></span>
+                <span style=" color: #FDE16D;" class="fa fa-star "></span>
+                <span style="color: #FDE16D;" class="fa fa-star "></span>
+                <span style=" color: #FDE16D;" class="fa fa-star"></span>
+                <span style=" color: #FDE16D;" class="fa fa-star"></span>
+            </div>
+            
+        </li>
+        <li>
+            <img src="https://i.ibb.co/ZGF1fWJ/c-ops.png" alt="appIcon" height="60" width="60">
+            <a href="https://play.google.com/store/apps/details?id=com.criticalforceentertainment.criticalops&hl=en">Critical Ops 4</a>
+            <figcaption><i>Critical Ops is a 3D MULTIPLAYER FPS build for mobile. Experience action, where fast reflexes and ...</i></figcaption>
+            <div class="rating">
+           <span class="fa fa-star"></span>
+            <span style="color: #FDE16D;" class="fa fa-star "></span>
+            <span style="color: #FDE16D;" class="fa fa-star "></span>
+            <span style="color: #FDE16D;" class="fa fa-star"></span>
+            <span style=" color: #FDE16D; " class="fa fa-star"></span>
+            </div>
+           
+        </li>
+        <li>
+            <img src="https://i.ibb.co/dLmjBgd/Drive-and-park.png" alt="appIcon" height="60" width="60">
+            <a href="https://play.google.com/store/apps/details?id=com.parking.game&hl=en">Drive and park</a>
+            <figcaption><i>Park cars. Earn money. Travel to around the world and collect cars from each location.</i></figcaption>
+            <div class="rating">
+                <span   class="fa fa-star"></span>
+            <span style=" color: #FDE16D;" class="fa fa-star "></span>
+            <span style=" color: #FDE16D;" class="fa fa-star "></span>
+            <span style="color: #FDE16D;" class="fa fa-star"></span>
+            <span style="color: #FDE16D;" class="fa fa-star"></span>
+            </div>
+                
+            </li> -->
+        <li>
+            <img src="https://i.ibb.co/4dgcXtS/Screenshot-1.png" alt="appIcon" height="60" width="60">
+            <a href="https://play.google.com/store/apps/details?id=com.hitrock.hideonline">Hide Online</a>
+            <figcaption><i>Hide Online — an addictive and thrilling multiplayer Hide and Seek action-shooter...</i></figcaption>
+            <div class="rating" style="transform: rotateY(180deg);">
+                <p id="rateMe">Rate me</p>
+                <span  onmouseover="starmark(this)" onclick="starmark(this)" id="1one"   class="fa fa-star"></span>
+<span onmouseover="starmark(this)" onclick="starmark(this)" id="2one"   class="fa fa-star "></span>
+<span onmouseover="starmark(this)" onclick="starmark(this)" id="3one"   class="fa fa-star "></span>
+<span onmouseover="starmark(this)" onclick="starmark(this)" id="4one"   class="fa fa-star"></span>
+<span onmouseover="starmark(this)" onclick="starmark(this)" id="5one"   class="fa fa-star"></span>
+            </div>
+            
+        </li>
+        <li id="description">
+            &copy2019 Designed by<a id="designer" href="https://codepen.io/SBabic/">StraleB</a>
+                All apps in this list belong to their respectful owners, make sure to check them out and give them a true rating :)
+        </li>
+</ul>
+</div>
+</div>
 </body>
+<script src=script/script.js></script>
+<script>
+	var count;
+
+function starmark(item)
+{
+count=item.id[0];
+sessionStorage.starRating = count;
+var subid= item.id.substring(1);
+for(var i=0;i<5;i++)
+{
+if(i<count)
+{
+document.getElementById((i+1)+subid).style.color="white";
+}
+else
+{
+document.getElementById((i+1)+subid).style.color="pink";
+}
+
+
+}
+
+}
+</script>
 </html>

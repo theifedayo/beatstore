@@ -8,6 +8,12 @@
 <div class="ms_profile_wrapper">
 
     <div class="container">
+        {%if message %}
+
+            <div style="padding-top: 40px" class="container"><h1 style="font-size: 20px"><b> {{ message }}</b></a></p>
+            </div>
+
+        {% endif %}
         {% if contact %}
             <div style="padding-top: 40px" class="container"><h1 style="font-size: 20px">Total Amount: <b>&#8358 {{ total }}</b></h1> <p><a href="/withdraw-contact/">Withdraw</a></p>
             </div>

@@ -58,27 +58,27 @@ def home_again(request):
     items = Beat.objects.filter(verified=True).order_by('-timestamp')
     relaxed = Beat.objects.filter(Q(verified=True) & Q(mood1='R'))
     users = items
-    try:
-        contact = ContactProf.objects.get(user=request.user)
-        template_name = 'core/home_again.html'
-        context = {'beat': beat, 'users': users, 'relaxed': relaxed, 'contact': contact}
-        return render(request, template_name, context)
+    # try:
+    #     contact = ContactProf.objects.get(user=request.user)
+    #     template_name = 'core/home_again.html'
+    #     context = {'beat': beat, 'users': users, 'relaxed': relaxed, 'contact': contact}
+    #     return render(request, template_name, context)
 	    
-    except ContactProf.DoesNotExist:
+    # except ContactProf.DoesNotExist:
 
-	    relaxed = Beat.objects.filter(Q(verified=True) & Q(mood1='R'))
-	    print(relaxed,'-----------------------------------')
-	    page = request.GET.get('page', 1)
-	    paginator = Paginator(items, 15)
-	    try:
-	        users = paginator.page(page)
-	    except PageNotAnInteger:
-	        users = paginator.page(1)
-	    except EmptyPage:
-	        users = paginator.page(paginator.num_pages)
-	    template_name = 'core/home_again.html'
-	    context = {'beat': beat, 'users': users, 'relaxed': relaxed}
-	    return render(request, template_name, context)
+	   #  relaxed = Beat.objects.filter(Q(verified=True) & Q(mood1='R'))
+	   #  print(relaxed,'-----------------------------------')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(items, 15)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+    template_name = 'core/home_again.html'
+    context = {'beat': beat, 'users': users, 'relaxed': relaxed}
+    return render(request, template_name, context)
 
 
 
@@ -1310,28 +1310,35 @@ def phone_page_prof(request):
 
 @login_required
 def contact_orders(request):
-    con = ContactProf.objects.filter(user=request.user)
-    for a in con:
-        cont = a
-        print(cont,'-------------')
-    contact = OrderContactProf.objects.filter(Q(ordered=True) & Q(contact=cont))
-    total = 0
-    for a in contact:
-        total += a.contact.price
-    print(total)
-    try:
-        contactcash = ContactCash.objects.get(user=request.user)
-        cash_for_me = ContactCash.objects.filter(user=request.user) 
-        for a in cash_for_me:
-            mine = a.cash  
-        context = {'contact': contact, 'total': mine}
-        return render(request, 'core/contact_orders.html', context)
+	try:
+	
+	    contact = ContactProf.objects.get(user=request.user)
+	    con = ContactProf.objects.filter(user=request.user)
+	    for a in con:
+	        cont = a
+	        print(cont,'-------------')
+	    contact = OrderContactProf.objects.filter(Q(ordered=True) & Q(contact=cont))
+	    total = 0
+	    for a in contact:
+	        total += a.contact.price
+	    print(total)
+	    try:
+	        contactcash = ContactCash.objects.get(user=request.user)
+	        cash_for_me = ContactCash.objects.filter(user=request.user) 
+	        for a in cash_for_me:
+	            mine = a.cash  
+	        context = {'contact': contact, 'total': mine}
+	        return render(request, 'core/contact_orders.html', context)
 
-    except ContactCash.DoesNotExist:
-        obj_ref = ContactCash(user=request.user)
-        obj_ref = ContactCash.objects.create(user=request.user, cash=total)
-        context = {'contact': contact}
-        return render(request, 'core/contact_orders.html', context)
+	    except ContactCash.DoesNotExist:
+	        obj_ref = ContactCash(user=request.user)
+	        obj_ref = ContactCash.objects.create(user=request.user, cash=total)
+	        context = {'contact': contact}
+	        return render(request, 'core/contact_orders.html', context)
+	except ContactProf.DoesNotExist:
+		message = "Your contact is not for sale, go to profile to set it if interested"
+		context = {'message': message}
+		return render(request, 'core/contact_orders.html', context)
 
 @login_required
 def withdraw_contact(request):
