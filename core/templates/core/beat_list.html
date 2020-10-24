@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<!-- <div class="container">
+
+	<div class="card">
+		<h1>My Beats</h1><hr>
+	        <div class="card-body">
+
+				{% for beat in beats %}
+				<div ><a href="{{ beat.slug }}/edit"> Edit </a><a href="{{ beat.slug }}/delete"> Delete </a></div>
+				<image src="{{ beat.thumbnail.url }}" width='30%' height="30%"/>
+				<h1 style="text-align: center;margin-top: -3rem;"><b>{{ beat.beat_name }}</b></h1>
+				<audio controls>
+				    <source src="{{ beat.sound.url }}" type="audio/mpeg">
+				</audio><b><p>#{{ beat.price }}</p></b>   
+				<div><small><b>Genre:</b>  {{ beat.get_genre1_display }}, {{ beat.get_genre2_display }}
+				</small></div>
+				<small><b>Mood:</b>  {{ beat.get_mood1_display }}, {{ beat.get_mood2_display }}
+				</small>
+				<div><small>{{ beat.timestamp }}</small></div><hr>
+
+				{% endfor %}
+			</div>
+	</div>
+</div> -->
+        <div class="ms_content_wrapper padder_top80">
+            <!----Free Download Css Start---->
+            <div class="ms_free_download">
+                <div class="ms_heading">
+                    <h1>My Beats</h1>
+                </div>
+				<div class="album_inner_list">
+					<div class="album_list_wrapper">
+						<ul class="album_list_name">
+							<li>#</li>
+							<li>Song Title</li>
+							<li>Genre</li>
+							<li class="text-center">Mood</li>
+							<li class="text-center">Add To Favourites</li>
+							<!-- <li class="text-center">Edit</li> -->
+							<li class="text-center">remove</li>
+						</ul>
+						{% for beat in beats %}
+						<ul>
+							<li><a href="{{ beat.sound.url }}"><span class="play_no">{{ forloop.counter }}</span><span class="play_hover"></span></a></li>
+							<li><a href="">{{ beat.beat_name }}</a></li>
+							<li><a href="#">{{ beat.get_genre1_display }}</a></li>
+							<li class="text-center"><a href="#">{{ beat.get_mood1_display }}, {{ beat.get_mood2_display }}</a></li>
+							<li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
+							<!-- <li class="text-center"><a href="{{ beat.slug }}/edit"><span class="ms_icon1 ms_active_icon"></span></a> -->
+							</li>
+							<li class="text-center"><a href="{{ beat.slug }}/delete"><span class="ms_close">
+									<img src="images/svg/close.svg" alt=""></span></a></li>
+						</ul>
+						{% endfor %}
+
+{% endblock %}

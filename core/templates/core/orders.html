@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="ms_profile_wrapper">
+
+    <div class="container">
+    	{% if order_beat %}
+	    	<div style="padding-top: 40px" class="container"><h1 style="font-size: 20px">Total Amount: <b>&#8358 {{ total }}</b></h1> <p><a href="/withdraw/">Withdraw</a></p>
+	    		<p>NOTE: 30% of beat's price has been deducted from your total amount - the amount you can withdraw!</p>
+	    	</div>
+
+			{% for obj in order_beat %}
+				
+		<div class="card-body">
+
+					<p style="padding-top: 30px"><b>+ &#8358 {{ obj.beat.price}} </b> -{{ obj.user }} ordered {{ obj.beat.beat_name }} at <small>{{ obj.timestamp }}</small></p>
+		</div>
+
+			{% endfor %}
+		{% else %}
+			<div style="padding-top: 40px" class="container"><h1 style="font-size: 20px">NO order at the present moment , check back later</b></h1> </div>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

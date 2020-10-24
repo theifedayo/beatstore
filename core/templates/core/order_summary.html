@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<br>
+<br>
+
+<br>
+<br>
+
+
+  <div class="ms_content_wrapper padder_top80">
+            <!----Free Download Css Start---->
+            <div class="ms_free_download">
+                <div class="ms_heading">
+                    <h1>My Cart</h1>
+                </div>
+                <div class="album_inner_list">
+                    <div class="album_list_wrapper">
+                        <ul class="album_list_name">
+                            <li>#</li>
+                            <li>Beat Title</li>
+                            <li>Price</li>
+                            <!-- <li class="text-center">Mood</li>
+                            <li class="text-center">Add To Favourites</li>
+                            <li class="text-center">Edit</li>
+ -->                            <li class="text-center">remove</li>
+                        </ul>
+                        {% for a in order_beat %}
+                        <ul>
+                            <li><span class="play_no">{{ forloop.counter }}</span></span></a></li>
+                            <li><a href="">{{ a.beat.beat_name }}</a></li>
+                            <li><a href="#">&#8358 {{ a.beat.price }}</a></li>
+                            <li class="text-center"><a href="/remove-from-cart/{{ a.beat.slug }}">Remove</li>
+                        </ul>
+                        {% empty %}
+                        <tr>
+                            <td colspan='5'>Your cart is empty </td>
+                        </tr>
+                        <tr>
+                            | <a href="/"> Continue shopping</a>
+                        </tr>
+                        {% endfor %}
+                        {% if order_beat %}
+                        <br>
+                        <br>
+                        <div>
+                            <tr>
+                                <td colspan="2"><b>Order Total </b></td>
+                                <td><b>&#8358 {{ object.get_total }}</b></td> | 
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+
+                                <!-- <a class='btn btn-warning float-right ml-2' href='/checkout/'>Proceed to checkout</a>
+                                <a class='btn btn-primary float-right' style="width: 150px" href='/'>Continue shopping</a> -->
+                                <a style="text-align: center;" href="/payment-options/" > Proceed to checkout</a> | 
+                                <a href="/">Continue shopping</a>
+                                </td>
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <br>
+                        <br><br>
+                        <br>
+                        <br>
+                       
+  {% endblock %}

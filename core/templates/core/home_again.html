@@ -1,0 +1,921 @@
+{% load static %}
+{% load cart_templates_tag %}
+<!DOCTYPE html>
+<!--
+Template Name: Miraculous - Online Music Store Html Template
+Version: 1.0.0
+Author: Kamleshyadav
+Website:
+Purchase:
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>Afro Beat - Just another site</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Music">
+    <meta name="keywords" content="">
+    <meta name="author" content="kamleshyadav">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/swiper/css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/nice_select/nice-select.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/player/volume.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/scroll/jquery.mCustomScrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'core/images/favicon.png' %}">
+</head>
+
+<body>
+    <!----Loader Start---->
+    <div class="ms_loader">
+        <div class="wrap">
+          <img src="images/loader.gif" alt="">
+        </div>
+    </div>
+    <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+        <!---Side Menu Start--->
+        <div class="ms_sidemenu_wrapper">
+            <div class="ms_nav_close">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+            <div class="ms_sidemenu_inner">
+                <div class="ms_logo_inner">
+                    <div class="ms_logo">
+                        <a href="/"><img style="width: 100%" src="{% static 'core/images/artist/afbc.png' %}" alt=""></a>
+                    </div>
+                    <div class="ms_logo_open">
+                        <a href="/"><img style="width: 80%" src="{% static 'core/images/artist/afbc.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="ms_nav_wrapper">
+                    <ul>
+                        <li><a href="/" class="active" title="Home">
+                        <span class="nav_icon">
+                            <span class="icon icon_discover"></span>
+                        </span>
+                        <span class="nav_text">
+                            Home
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="/my-beats" title="My Beats">
+                        <span class="nav_icon">
+                            <span class="icon icon_albums"></span>
+                        </span>
+                        <span class="nav_text">
+                            My Beats
+                        </span>
+                        </a>
+                        </li>
+                        <!-- <li><a href="/upload-beat" title="Upload A Beat">
+                        <span class="nav_icon">
+                            <span class="icon icon_station"></span>
+                        </span>
+                        <span class="nav_text">
+                            artists
+                        </span>
+                        </a> -->
+                        <!-- </li>
+                        <li><a href="genres.html" title="Genres">
+                        <span class="nav_icon">
+                            <span class="icon icon_genres"></span>
+                        </span>
+                        <span class="nav_text">
+                            genres
+                        </span>
+                        </a>
+                        </li>-->
+                        <!-- <li><a href="" title="Contact Orders">
+                        <span class="nav_icon">
+                            <span class="icon icon_tracks"></span>
+                        </span>
+                        <span class="nav_text">
+                            Contact Orders
+                        </span>
+                        </a>
+                        </li> -->
+                        <!-- <li><a href="free_music.html" title="Free Music">
+                        <span class="nav_icon">
+                            <span class="icon icon_music"></span>
+                        </span>
+                        <span class="nav_text">
+                            free music
+                        </span>
+                        </a>
+                        </li> -->
+                        <li><a href="/get-contacts" title="Get Contacts">
+                        <span class="nav_icon">
+                            <span class="icon icon_station"></span>
+                        </span>
+                        <span class="nav_text">
+                            Connect
+                        </span>
+                        </a>
+                        </li>
+                    </ul>
+                    <ul class="nav_downloads">
+                        <li><a href="/my-orders" title="My Orders">
+                        <span class="nav_icon">
+                            <span class="icon icon_download"></span>
+                        </span>
+                        <span class="nav_text">
+                            My Orders
+                        </span>
+                        </a>
+                        </li>
+                        {%if contact %}
+                        <li><a href="/contact-orders" title="Contact Orders">
+                        <span class="nav_icon">
+                            <span class="icon icon_tracks"></span>
+                        </span>
+                        <span class="nav_text">
+                            Contact Orders
+                        </span>
+                        </a>
+                        </li>
+                        {% endif %}
+                        <li><a href="/purchased" title="Purchased">
+                        <span class="nav_icon">
+                            <span class="icon icon_purchased"></span>
+                        </span>
+                        <span class="nav_text">
+                            purchased
+                        </span>
+                        </a>
+                        </li>
+                        <!-- <li><a href="favourite.html" title="Favourites">
+                        <span class="nav_icon">
+                            <span class="icon icon_favourite"></span>
+                        </span>
+                        <span class="nav_text">
+                            favourites
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="history.html" title="History">
+                        <span class="nav_icon">
+                            <span class="icon icon_history"></span>
+                        </span>
+                        <span class="nav_text">
+                            history
+                        </span>
+                        </a>
+                        </li> -->
+                    </ul>
+                    <ul class="nav_playlist">
+                        {% if request.user.is_authenticated and request.user.is_staff %}
+                            <li><a href="/admin-list" title="All Beats">
+                            <span class="nav_icon">
+                                <span class="icon icon_fe_playlist"></span>
+                            </span>
+                            <span class="nav_text">
+                                All Beats
+                            </span>
+                            </a>
+                            </li>
+                        {% endif %}
+                        <li><a href="/upload-beat" title="Upload Beat">
+                        <span class="nav_icon">
+                            <span class="icon icon_c_playlist"></span>
+                        </span>
+                        <span class="nav_text">
+                            Upload Beat
+                        </span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!---Header--->
+        <div class="ms_header">
+            <div class="ms_top_left">
+                <div class="ms_top_search">
+
+                    <form class="form-inline" method='GET' action="/search" autocomplete="off">
+
+                        <input type="text" class="form-control" name='q' id="q" value="{{ request.GET.q }}"placeholder="Search BeatStore..">
+                       <!--  <div class="ms_top_trend">
+                            <button type="submit" class="ms_btn">Search</button>
+                        </div> -->
+
+                    <!-- </form> -->
+                </div>
+                <div class="ms_top_trend">
+                    <button type="submit" class="ms_btn">Search</button>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="ms_top_right">
+                {% if request.user.is_authenticated %}
+                <div class="ms_top_lang">
+                    <a href="/logout/"><span data-toggle="modal" data-target="#lang_modal">Logout </span></a>
+                </div>
+                
+                <div class="ms_top_btn">
+                    <a href="/contact-us/" class="ms_btn reg_btn"><span>Contact Us</span></a>
+                    <a href="/profile/" class="ms_btn reg_btn"><span>Profile</span></a>
+                    <a href="/order-summary/" class="ms_btn reg_btn"><span>Cart {{ request.user|cart_item_count }}</span></a>
+                 </div>
+                {% else %}
+                <div class="ms_top_btn">
+                    <a href="/contact-us/" class="ms_btn reg_btn"><span>Contact Us</span></a>
+                    <a href="/signup" class="ms_btn reg_btn"><span>register</span></a>
+                    <a href="/login" class="ms_btn login_btn"><span>login</span></a>
+                 </div>
+                 {% endif %}
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <!---Banner--->
+         <div class="ms-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="ms_banner_img" style="padding-left: 0px; padding-top: 20px;">
+                                <img style="padding-left: 0px;" src="{% static 'core/images/artist/1.jpg' %}" alt="" class="img-fluid">
+                            </div>
+                            <div class="ms_banner_text">
+                                <br>
+                                <br>
+
+
+                                <h1 style="padding-left: 25px;">Afro Beat</h1>
+                                <h1 class="ms_color" style="padding-left: 25px;">Africa's No.1 market place to buy and sell beats</h1>
+                                <p style="padding-left: 25px;">At Afrobeat NG, we strive to inspire music collaboration between the people writing the songs and the people composing the music. Bringing arisits from all over the world together to truly explore their full potential as song makers.</p>
+                                <div class="ms_banner_btn" style="padding-left: 25px;">
+                                    {% if request.user.is_authenticated %}
+                                        <a href="/beat-store" class="ms_btn" >Beat Store</a>
+                                        <a href="/upload-beat" class="ms_btn">Upload Beat</a>
+
+                                    {% else %}
+                                        <a href="/signup" class="ms_btn" >Register</a>
+                                        <a href="/upload-beat" class="ms_btn">Get Started</a>
+                                    {% endif %}
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---Main Content Start--->
+            <div class="ms_content_wrapper padder_top60">
+            <!---Recently Played Music--->
+            <div class="ms_rcnt_slider">
+
+            </div>
+            <div class="ms_rcnt_slider">
+                <div class="ms_heading">
+                    <h1>Features</h1>
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="images/music/r_music1.jpg" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="/upload-beat/">Create</a></h3>
+                                    <p>Use your new beats for your projects and create something amazing..or better than amazing..or even better than that</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="images/music/r_music2.jpg" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                        <div class="ms_play_icon">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="/get-contacts/">Get Contacts</a></h3>
+                                    <p>Meet professionals in spheres of life, network, get contact and build amazing products together</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="images/music/r_music4.jpg" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                        <div class="ms_play_icon">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="/beat-store/">Browse</a></h3>
+                                    <p>Browse from our huge catalog of hundreds of thousands of beats from some of the best producers on the planet...probab;y from the universe.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="images/music/r_music2.jpg" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                        <div class="ms_play_icon">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="/beat-store/">Try before buy</a></h3>
+                                    <p>You get to listen to the beats snippet, 15 seconds before you even touch your wallet or credit card to make any purchase</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="images/music/r_music3.jpg" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                        <div class="ms_play_icon">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="/login">Promote</a></h3>
+                                    <p>You make beat? Got an album or a single release? and need help promotions for your beats?Afrobeats will sort this out for you!for you.Book a session with us right now</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div class="swiper-button-next1 slider_nav_next"></div>
+                    <div class="swiper-button-prev1 slider_nav_prev"></div> -->
+                </div>
+
+            <!---Weekly Top 15--->
+            <div class="ms_weekly_wrapper">
+                <div class="ms_weekly_inner">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ms_heading">
+                                <h1>Available Beats</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 padding_right40">
+
+                           {%for obj in beat %}
+
+                            <div class="ms_weekly_box">
+                                <div class="weekly_left">
+                                    <span class="w_top_no">
+                                        {{ forloop.counter }}
+                                    </span>
+                                    <div class="w_top_song">
+                                        <div class="w_tp_song_img">
+                                            <img src="{{ obj.thumbnail.url }}" alt="" class="img-fluid">
+                                            <div class="ms_song_overlay">
+                                            </div>
+                                            <div class="ms_play_icon">
+                                                <img src="images/svg/play.svg" alt="">
+                                            </div>
+
+                                        </div>
+                                        <div class="w_tp_song_name">
+                                            <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a></h3>
+                                            <p>Genre : {{ obj.get_genre1_display }}</p>
+                                            <p>Mood : {{ obj.get_mood1_display }}, {{ obj.get_mood2_display }}</p>
+                                            <p>Price : &#8358 {{ obj.price }}</p>
+
+                                            <p><a href="{{ obj.slug }}/license">Add to cart</a></p>
+                                            <audio controls>
+                                                <source src="{{ obj.sound_two.url }}" type="audio/mpeg">
+                                            </audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weekly_right">
+                                    <span class="w_song_time">0:15</span>
+                                    <span class="ms_more_icon" data-other="1">
+                                        <img src="images/svg/more1.svg" alt="">
+                                    </span>
+                                </div>
+                                <ul class="more_option">
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                                </ul>
+                            </div>
+                            <div class="ms_divider"></div>
+                        {% endfor %}
+
+                            <!--  -->
+                        </div>
+                        <!-- -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---Featured Artists Music--->
+            <div class="ms_weekly_wrapper" style="padding-left: 15px;">
+                <div class="ms_weekly_inner">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ms_heading">
+                                <h1>Relaxed Beats</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 padding_right40" style="padding-left: 15px;">
+
+                           {%for obj in relaxed %}
+
+                            <div class="ms_weekly_box">
+                                <div class="weekly_left">
+                                    <span class="w_top_no">
+                                        {{ forloop.counter }}
+                                    </span>
+                                    <div class="w_top_song">
+                                        <div class="w_tp_song_img">
+                                            <img  style="width: 400%" src="{{ obj.thumbnail.url }}" alt="" class="img-fluid">
+                                            <div class="ms_song_overlay">
+                                            </div>
+                                            <div class="ms_play_icon">
+                                                <img src="images/svg/play.svg" alt="">
+                                            </div>
+
+                                        </div>
+                                        <div class="w_tp_song_name">
+                                            <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a></h3>
+                                            <p>Genre : {{ obj.get_genre1_display }}</p>
+                                            <p>Mood : {{ obj.get_mood1_display }}, {{ obj.get_mood2_display }}</p>
+                                            <p>Price : &#8358 {{ obj.price }}</p>
+                                            <p><a href="{{ obj.slug }}/license">Add to cart</a></p>
+                                            <audio controls>
+                                                <source src="{{ obj.sound_two.url }}" type="audio/mpeg">
+                                            </audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weekly_right">
+                                    <span class="w_song_time">0:15</span>
+                                    <span class="ms_more_icon" data-other="1">
+                                        <img src="images/svg/more1.svg" alt="">
+                                    </span>
+                                </div>
+                                <ul class="more_option">
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                                </ul>
+                            </div>
+                            <div class="ms_divider"></div>
+                        {% endfor %}
+
+                            <!--  -->
+                        </div>
+                        <!-- -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!----New Releases Section Start---->
+             <div class="ms_featured_slider" style="padding-left: 15px;">
+                <div class="ms_heading">
+                    <center>
+                        <h1 style="text-align: center;">Recently Uploaded Beats</h1>
+                    </center>
+                </div>
+                <div class="ms_feature_slider swiper-container" style="padding-left: 55px;">
+                    <div class="swiper-wrapper" style="padding-left: 55px;">
+                        {% for obj in users %}
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="{{ obj.thumbnail.url }}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+                                        <ul class="more_option">
+                                            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                                            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                                        </ul>
+                                        <div class="ms_play_icon">
+                                            <img src="images/svg/play.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="{{ obj.sound_two.url }}" target="_blank">{{ obj.beat_name }}</a></h3>
+                                    <p>&#8358 {{ obj.price }}</p>
+                                    <p>Uploaded {{ obj.timestamp}}</p>
+                                    <p><a href="{{ obj.slug}}/license">Add to cart</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next1 slider_nav_next"></div>
+                <div class="swiper-button-prev1 slider_nav_prev"></div>
+            </div>
+            {% if users.has_other_pages %}
+                <ul class="pagination">
+                  {% if users.has_previous %}
+                    <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                  {% endif %}
+                  {% for i in users.paginator.page_range %}
+                    {% if users.number == i %}
+                      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if users.has_next %}
+                    <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                  {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+            <!----Add Section Start---->
+            <div class="ms_advr_wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#"><img src="images/adv.jpg" alt="" class="img-fluid"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----Featured Albumn Section Start---->
+            <!----Add Section Start---->
+            <div class="ms_advr_wrapper ms_advr2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#"><img src="images/adv1.jpg" alt="" class="img-fluid"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----Live Radio Section Start---->
+            <!----Main div close---->
+        </div>
+        <!---Featured Artists Music--->
+            <div class="ms_featured_slider">
+                <div class="ms_heading">
+                    <center><h1>Producers we've worked with</h1></center>
+                    <center><p style="padding-left: 85px;color: white;">Looking for really cool African beats and professional African music producers for your next project?Look no further beacuse we've got you covered!</p></center>
+
+                </div>
+                <div class="ms_feature_slider swiper-container" style="padding-left: 85px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="padding-left: 75px;">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="{% static 'core/images/artist/davido.png' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="{% static 'core/images/svg/more.svg' %}" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="#">Davido</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="{% static 'core/images/artist/you.png' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="#">Wizkid</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="{% static 'core/images/artist/donjazzy.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="#">Don Jazzy</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <img src="{% static 'core/images/artist/burna.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_more_icon">
+                                            <img src="images/svg/more.svg" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="#">Burna Boy</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms_genres_wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ms_heading">
+                            <center><h1>Top Genres</h1></center>
+                            <!-- <span class="veiw_all"><a href="#">view more</a></span> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <div class="ms_genres_box" style="padding-left: 105px;">
+
+                             <img src="{% static 'core/images/artist/2.jpg' %}" alt="">
+                            <div class="ms_main_overlay">
+                                <div class="ms_box_overlay"></div>
+                                <div class="ms_play_icon">
+                                    <!-- <img src="{% static 'core/images/svg/play.svg' %}" alt=""> -->
+                                </div>
+                                <div class="ovrly_text_div">
+                                    <span class="ovrly_text1"><a href="/bangare">Bangare</a></span>
+                                    <span class="ovrly_text2"><a href="#">view song</a></span>
+                                </div>
+                            </div>
+                            <div class="ms_box_overlay_on">
+                                <div class="ovrly_text_div">
+                                    <span class="ovrly_text1"><a href="/bangare">Bangare</a></span>
+                                    <span class="ovrly_text2"><a href="#">view song</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="ms_genres_box">
+                                     <img src="{% static 'core/images/artist/3.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_play_icon">
+                                            <img src="images/svg/play.svg" alt="">
+                                        </div>
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/randb">R & B</a></span>
+                                        </div>
+                                    </div>
+                                    <div class="ms_box_overlay_on">
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/randb">R & B</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="ms_genres_box">
+                                     <img src="{% static 'core/images/artist/4.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_play_icon">
+                                            <img src="images/svg/play.svg" alt="">
+                                        </div>
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/afroblues">Afro Blues</a></span>
+                                        </div>
+                                    </div>
+                                    <div class="ms_box_overlay_on">
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/afroblues">Afro Blues</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="ms_genres_box">
+                                     <img src="{% static 'core/images/artist/5.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_play_icon">
+                                            <img src="images/svg/play.svg" alt="">
+                                        </div>
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/afropop">Afro Pop</a></span>
+                                        </div>
+                                    </div>
+                                    <div class="ms_box_overlay_on">
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/afropop"> Afro Pop</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="ms_genres_box">
+                                     <img src="{% static 'core/images/artist/6.jpg' %}" alt="">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_play_icon">
+                                            <img src="images/svg/play.svg" alt="">
+                                        </div>
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/reggaeton">Reggaeton</a></span>
+                                        </div>
+                                    </div>
+                                    <div class="ms_box_overlay_on">
+                                        <div class="ovrly_text_div">
+                                            <span class="ovrly_text1"><a href="/reggaeton">Reggaeton</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ms_genres_box">
+                             <img src="{% static 'core/images/artist/2.jpg' %}" alt="">
+                            <div class="ms_main_overlay">
+                                <div class="ms_box_overlay"></div>
+                                <div class="ms_play_icon">
+                                    <img src="images/svg/play.svg" alt="">
+                                </div>
+                                <div class="ovrly_text_div">
+                                    <span class="ovrly_text1"><a href="/pop">Pop</a></span>
+                                </div>
+                            </div>
+                            <div class="ms_box_overlay_on">
+                                <div class="ovrly_text_div">
+                                    <span class="ovrly_text1"><a href="/pop">Pop</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <!----Footer Start---->
+        <div class="ms_footer_wrapper">
+            <div class="ms_footer_logo">
+                <a href="index.html"><img src="images/open_logo.png" alt=""></a>
+            </div>
+            <div class="ms_footer_inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer_box">
+                            <img style="width: 80%" src="{% static 'core/images/artist/afbc.png' %}" alt="">
+                            <p>Afrobeat NG is home to many professionals who make good African music. You can sell Afro beats, buy Afro beats and We offer professional music making services here.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer_box footer_app">
+                            <h1 class="footer_title">About Us</h1>
+                            <p>We're a group of people passionate about bringing you the latest afro beats in the world.<br> Download your favourite beats at just one click. Register and get started!</p>
+                            <a href="#" class="foo_app_btn"><img src="images/google_play.jpg" alt="" class="img-fluid"></a>
+                            <a href="#" class="foo_app_btn"><img src="images/app_store.jpg" alt="" class="img-fluid"></a>
+                            <a href="#" class="foo_app_btn"><img src="images/windows.jpg" alt="" class="img-fluid"></a>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-3 col-md-6">
+                        <div class="footer_box footer_contacts">
+                            <h1 class="footer_title"><a href="/contact-us">contact us</a></h1>
+                            <ul class="foo_con_info">
+                                <li>
+                                    <div class="foo_con_icon">
+                                        <img src="images/svg/phone.svg" alt="">
+                                    </div>
+                                    <div class="foo_con_data">
+                                        <span class="con-title">Call us :</span>
+                                        <span>(+1) 202-555-0176, (+1) 2025-5501</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="foo_con_icon">
+                                        <img src="images/svg/message.svg" alt="">
+                                    </div>
+                                    <div class="foo_con_data">
+                                        <span class="con-title">email us :</span>
+                                        <span><a href="#">demo@mail.com </a>, <a href="#">dummy@mail.com</a></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="foo_sharing">
+                                <div class="share_title">follow us :</div>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----Copyright---->
+            <div class="col-lg-12">
+                <div class="ms_copyright">
+                    <div class="footer_border"></div>
+                    <p>Copyright &copy; 2020 <a href="#">Afro Beat</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!----Audio Player Section---->
+    <!----Register Modal Start---->
+    <!-- Modal -->
+    <!--Main js file Style-->
+
+    <script type="text/javascript" src="{% static 'core/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/swiper/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/jplayer.playlist.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/jquery.jplayer.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/audio-player.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/volume.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/nice_select/jquery.nice-select.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/scroll/jquery.mCustomScrollbar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/custom.js' %}"></script>
+</body>
+
+</html>
+

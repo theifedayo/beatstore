@@ -1,0 +1,115 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<style>
+    body{
+      margin      : 0;
+      padding     : 0;
+      font-family : sans-serif;
+      line-height : 1.5;
+    }
+
+    p{
+      margin  : 0 0 1.5em;
+      padding : 0;
+    }
+
+    a{
+      color           : pink;
+      text-decoration : none;
+    }
+
+    .starRating:not(old){
+      display        : inline-block;
+      width          : 7.5em;
+      height         : 1.5em;
+      overflow       : hidden;
+      vertical-align : bottom;
+    }
+
+    .starRating:not(old) > input{
+      margin-right : -100%;
+      opacity      : 0;
+    }
+
+    .starRating:not(old) > label{
+      display         : block;
+      float           : right;
+      position        : relative;
+      background      : url("{% static "core/stars/star-off.svg" %}");
+      background-size : contain;
+    }
+
+    .starRating:not(old) > label:before{
+      content         : '';
+      display         : block;
+      width           : 1.5em;
+      height          : 1.5em;
+      background      : url("{% static "core/stars/star-on.svg" %}");
+      background-size : contain;
+      opacity         : 0;
+      transition      : opacity 0.2s linear;
+    }
+
+    .starRating:not(old) > label:hover:before,
+    .starRating:not(old) > label:hover ~ label:before,
+    .starRating:not(:hover) > :checked ~ label:before{
+      opacity : 1;
+    }
+</style>
+<center>
+    <div class="ms_profile_wrapper">
+                <h1>Connect</h1>
+    </div>
+<div class="ms_weekly_wrapper">
+{% for obj in users %}
+        <img  style="border-radius: 10px;" src="{{ obj.user.profile.profile_pic.url}}">
+        <h3><a href=""target="_blank">{{ obj.user.username }}</a></h3>
+        <p>Full Name - {{ obj.user.profile.full_name}}</p>
+        <p>Company's Name - {{ obj.company_name }}</p>
+        <p>Skill - {{ obj.user.profile.get_skill_display }}</p>
+        <p>Price - &#8358 {{ obj.price }}</p>
+        <span class="starRating">
+            <input id="rating5" type="radio" name="rating" value="5" checked>
+            <label for="rating5">5</label>
+            <input id="rating4" type="radio" name="rating" value="4">
+            <label for="rating4">4</label>
+            <input id="rating3" type="radio" name="rating" value="3">
+            <label for="rating3">3</label>
+            <input id="rating2" type="radio" name="rating" value="2">
+            <label for="rating2">2</label>
+            <input id="rating1" type="radio" name="rating" value="1">
+            <label for="rating1">1</label>
+        </span>
+        <div>  <div class="starRatingContainer"> <div class="className"> </div> </div>  <div class="ratingHolder"> </div> </div> 
+        <a href="/paystack/connect/{{ obj.pk }}/"><p>Buy</p></a>
+{% endfor %}
+        <hr>
+<script>
+
+    //setting variables
+var properties1=[
+    {"rating":"4.3", "maxRating":"5", "minRating":"0.5", "readOnly":"no", "starImage":"{% static 'core/stars/star.png' %}", "emptyStarImage":"{% static 'core/stars/starbackground.png' %}", "starSize":"16", "step":"0.5"},
+    {"rating":"2.7", "maxRating":"5", "readOnly":"yes", "starImage":"{% static 'core/stars/star.png' %}", "emptyStarImage":"{% static 'core/stars/starbackground.png' %}", "starSize":"32"}
+];
+var properties2=[
+    {"rating":"4.3", "maxRating":"5", "minRating":"1", "readOnly":"no", "starImage":"{% static 'core/stars/star.png' %}", "starSize":"16", "step":"0.5"},
+    {"rating":"4.3", "maxRating":"10", "readOnly":"no", "starImage":"{% static 'core/stars/star.png' %}", "emptyStarImage":"{% static 'core/stars/starbackground.png' %}", "starSize":"16", "step":"1"},
+    {"rating":"4.3", "maxRating":"5", "readOnly":"no", "starImage":"{% static 'core/stars/star.png' %}", "backgroundStarImage":"{% static 'core/stars/backgroundStar.png' %}", "starSize":"16", "step":"0.5"}
+];
+var className="ratingSystem";
+
+//execution
+rateSystem(className, properties1, function(rating, ratingTargetElement){  ratingTargetElement.parentElement.parentElement.getElementsByClassName("ratingHolder")[0].innerHTML = rating; });
+
+rateSystem("className", properties2, function(rating, ratingTargetElement){  ratingTargetElement.parentElement.parentElement.getElementsByClassName("ratingHolder")[0].innerHTML = rating;  });
+
+rateSystem("update1.2", [properties2[2]], function(rating, ratingTargetElement, isTouchScreen){ ratingTargetElement.parentElement.parentElement.getElementsByClassName("ratingHolder")[0].innerHTML = rating; }, function(rating, ratingTargetElement, isTouchScreen){document.getElementById("customTooltip").innerHTML=rating; if(rating>4.5){document.getElementById("customTooltip").innerHTML="perfect :)"} document.getElementById("customTooltip").style.top=(ratingTargetElement.getBoundingClientRect().bottom + 2)+"px"; document.getElementById("customTooltip").style.display = "inline-block"; if(isTouchScreen){document.getElementById("customTooltip").style.backgroundColor="purple";} }, function(rating, ratingTargetElement, isTouchScreen){ document.getElementById("customTooltip").style.display="none"; });
+rateSystem(string, arrayOfJsonObjects, function(rating, triggeredElement){});
+</script>
+</div>
+</center>
+{% endblock %}

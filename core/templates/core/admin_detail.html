@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% if request.user.is_authenticated and request.user.is_staff %}  <!-- is_admin -->
+
+    <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+    	 <div class="ms_content_wrapper padder_top80">
+
+			<div class="ms_blog_single_wrapper">
+				<div class="row">
+					<div class="col-lg-9 col-md-9">
+						<div class="ms_blog_single">
+							<div class="blog_single_img">
+
+								<div style="font-size: 20px"><a href="/verify/{{ beat.slug }}"> Verify </a> | <a href="/unverify/{{ beat.slug }}"> Unverify </a> | <a href="/del/{{ beat.slug }}"> Delete </a></div>
+								<image src="{{ beat.thumbnail.url }}" style="width: auto;height: auto; max-width: 50%; max-height: 50%"> </image>
+
+								<h3 style="font-size: 20px; padding-top: 20px" class="ms_blog_title">{{ beat.beat_name }}</h3>
+
+								<audio controls>
+								    <source src="{{ beat.sound.url }}" type="audio/mpeg">
+								</audio><div class="ms_post_meta">
+									<ul style="color: white">
+										<li>{{ beat.timestamp }} </li>
+										<p>
+											<li> Genre: {{ beat.get_genre1_display }}</li>
+										</p>
+										<p>
+											<li> Mood: {{ beat.get_mood1_display }}, {{ beat.get_mood2_display }} </li>
+										</p>
+										<p>
+											<li> Price:&#8358 {{ beat.price }} </li>
+										</p>
+									</ul>
+								</div>
+
+								<h3 style="font-size: 15px;">Terms and Conditions</h3>
+								<p style="color: white">{{ beat.license }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+
+{% endblock %}

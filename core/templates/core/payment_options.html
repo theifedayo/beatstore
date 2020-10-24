@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+
+<br>
+
+<div class="ms_profile_wrapper">
+                <h1>Choose a payment option</h1>
+            </div>
+            <!----Main div close---->
+        </div>
+<div class="container">
+    <form method="POST" class="card-body">{% csrf_token %}
+    	{{ form }}
+
+      <hr class="mb-4">
+      <button style="border-radius: 12px; width: 120px; background: white;" type="submit">Continue </button>
+
+    </form>
+</div>
+
+
+{% endblock %}

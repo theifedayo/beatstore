@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<body>
+    <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+    	 <div class="ms_content_wrapper padder_top80">
+
+			<div class="ms_blog_single_wrapper">
+				<div class="row">
+					<div class="col-lg-9 col-md-9">
+						<div class="ms_blog_single">
+							<div class="blog_single_img">
+								<img src="{{ beat.thumbnail.url }}" alt="" class="img-fluid">
+							</div>
+							<div class="blog_single_content">
+								<h3 class="ms_blog_title">{{ beat.beat_name }}</h3>
+								  <audio controls>
+								  	<source src="{{ beat.sound.url }}" type="audio/mpeg">
+  								  </audio>
+								<div class="ms_post_meta">
+									<ul>
+										<li>{{ beat.timestamp }} </li>
+										<p>
+											<li> Genre: {{ beat.get_genre1_display }</li>
+										</p>
+										<p>
+											<li> Mood: {{ beat.get_mood1_display }}, {{ beat.get_mood2_display }} </li>
+										</p>
+									</ul>
+								</div>
+								<p>{{ beat.license }}</p>
+								<div class="ms_blog_tag foo_sharing">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+						
+
+{% endblock %}

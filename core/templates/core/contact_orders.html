@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="ms_profile_wrapper">
+
+    <div class="container">
+        {% if contact %}
+            <div style="padding-top: 40px" class="container"><h1 style="font-size: 20px">Total Amount: <b>&#8358 {{ total }}</b></h1> <p><a href="/withdraw-contact/">Withdraw</a></p>
+            </div>
+
+            {% for obj in contact %}
+                
+        <div class="card-body">
+
+                    <p style="padding-top: 30px"><b>+ &#8358 {{ obj.contact.price}} </b> -{{ obj.user }} ordered your contact at <small>{{ obj.timestamp }}</small></p>
+        </div>
+
+            {% endfor %}
+        {% else %}
+            <div style="padding-top: 40px" class="container"><h1 style="font-size: 20px">NO order at the present moment , check back later</b></h1> </div>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

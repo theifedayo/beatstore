@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<body>
+    <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+
+    	 <div class="ms_content_wrapper padder_top80">
+    	 	{%for beat in beats %}
+			<div class="ms_blog_single_wrapper">
+				<div class="row">
+					<div class="col-lg-9 col-md-9">
+						<div class="ms_blog_single">
+							<div class="blog_single_img">
+								<img src="{{ beat.thumbnail.url }}" alt="" class="img-fluid">
+							</div>
+							<div class="blog_single_content">
+								<h3 class="ms_blog_title">{{ beat.beat_name }}</h3>
+								  <audio controls>
+								  	<source src="{{ beat.sound_two.url }}" type="audio/mpeg">
+  								  </audio>
+								<div class="ms_post_meta">
+									<ul>
+										<li>{{ beat.timestamp }} </li>
+										<p><li>#{{ beat.price }} </li></p>
+										<p>
+											<li> Genre: {{ beat.get_genre1_display }}, {{ beat.get_genre2_display }}</li>
+										</p>
+										<p>
+											<li> Mood: {{ beat.get_mood1_display }}, {{ beat.get_mood2_display }} </li>
+										</p>
+										<p><a href="/{{ beat.slug }}/license">Buy Beat </li></p>
+									</ul>
+								</div>
+								<p>{{ beat.license }}</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+</body>
+						
+
+{% endblock %}

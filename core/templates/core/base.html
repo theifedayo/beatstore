@@ -1,0 +1,349 @@
+{% load static %}
+{% load cart_templates_tag %}
+<!DOCTYPE html>
+<!-- 
+Template Name: Miraculous - Online Music Store Html Template
+Version: 1.0.0
+Author: Kamleshyadav
+Website: 
+Purchase: 
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>Afro Beat - Just another site</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Music">
+    <meta name="keywords" content="">
+    <meta name="author" content="kamleshyadav">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/open-iconic-bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/swiper/css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/nice_select/nice-select.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/player/volume.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/js/plugins/scroll/jquery.mCustomScrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'core/images/favicon.png' %}">
+</head>
+
+<body>
+    <!----Loader Start---->
+    <div class="ms_loader">
+        <div class="wrap">
+          <img src="images/loader.gif" alt="">
+        </div>
+    </div>
+    <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+        <!---Side Menu Start--->
+        <div class="ms_sidemenu_wrapper">
+            <div class="ms_nav_close">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+            <div class="ms_sidemenu_inner">
+                
+                <div class="ms_logo_inner">
+                    <div class="ms_logo">
+                        <a href="/"><img style="width: 100%" src="{% static 'core/images/artist/afbc.png' %}" alt=""></a>
+                    </div>
+                    <div class="ms_logo_open">
+                        <a href="/"><img style="width: 80%" src="{% static 'core/images/artist/afbc.png' %}" alt=""></a>
+                    </div>
+                </div>
+                </div>
+                <div class="ms_nav_wrapper">
+                    <ul>
+                        <li><a href="/" class="active" title="Home">
+                        <span class="nav_icon">
+                            <span class="icon icon_discover"></span>
+                        </span>
+                        <span class="nav_text">
+                            Home
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="/my-beats" title="My Beats">
+                        <span class="nav_icon">
+                            <span class="icon icon_albums"></span>
+                        </span>
+                        <span class="nav_text">
+                            My Beats
+                        </span>
+                        </a>
+                        </li>
+                        <!-- <li><a href="/upload-beat" title="Upload A Beat">
+                        <span class="nav_icon">
+                            <span class="icon icon_station"></span>
+                        </span>
+                        <span class="nav_text">
+                            artists
+                        </span>
+                        </a> -->
+                        <!-- </li>
+                        <li><a href="genres.html" title="Genres">
+                        <span class="nav_icon">
+                            <span class="icon icon_genres"></span>
+                        </span>
+                        <span class="nav_text">
+                            genres
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="top_track.html" title="Top Tracks">
+                        <span class="nav_icon">
+                            <span class="icon icon_tracks"></span>
+                        </span>
+                        <span class="nav_text">
+                            top tracks
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="free_music.html" title="Free Music">
+                        <span class="nav_icon">
+                            <span class="icon icon_music"></span>
+                        </span>
+                        <span class="nav_text">
+                            free music
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="stations.html" title="Stations">
+                        <span class="nav_icon">
+                            <span class="icon icon_station"></span>
+                        </span>
+                        <span class="nav_text">
+                            stations
+                        </span>
+                        </a>
+                        </li> -->
+                        <li><a href="/get-contacts" title="Get Contacts">
+                        <span class="nav_icon">
+                            <span class="icon icon_station"></span>
+                        </span>
+                        <span class="nav_text">
+                            Connect
+                        </span>
+                        </a>
+                        </li>
+                    </ul>
+                    <ul class="nav_downloads">
+                        <li><a href="/my-orders" title="My Orders">
+                        <span class="nav_icon">
+                            <span class="icon icon_download"></span>
+                        </span>
+                        <span class="nav_text">
+                            My Orders
+                        </span>
+                        </a>
+                        </li>
+                        {% if contact %}
+                        <li><a href="/contact-orders" title="Contact Orders">
+                        <span class="nav_icon">
+                            <span class="icon icon_tracks"></span>
+                        </span>
+                        <span class="nav_text">
+                            Contact Orders
+                        </span>
+                        </a>
+                        </li>
+                        {% endif %}
+                        <li><a href="/purchased" title="Purchased">
+                        <span class="nav_icon">
+                            <span class="icon icon_purchased"></span>
+                        </span>
+                        <span class="nav_text">
+                            purchased
+                        </span>
+                        </a>
+                        </li>
+                        <!-- <li><a href="favourite.html" title="Favourites">
+                        <span class="nav_icon">
+                            <span class="icon icon_favourite"></span>
+                        </span>
+                        <span class="nav_text">
+                            favourites
+                        </span>
+                        </a>
+                        </li>
+                        <li><a href="history.html" title="History">
+                        <span class="nav_icon">
+                            <span class="icon icon_history"></span>
+                        </span>
+                        <span class="nav_text">
+                            history
+                        </span>
+                        </a>
+                        </li> -->
+                    </ul>
+                    <ul class="nav_playlist">
+                        {% if request.user.is_authenticated and request.user.is_staff %}
+                            <li><a href="/admin-list" title="All Beats">
+                            <span class="nav_icon">
+                                <span class="icon icon_fe_playlist"></span>
+                            </span>
+                            <span class="nav_text">
+                                All Beats
+                            </span>
+                            </a>
+                            </li>
+                        {% endif %}
+                        <li><a href="/upload-beat" title="Upload Beat">
+                        <span class="nav_icon">
+                            <span class="icon icon_c_playlist"></span>
+                        </span>
+                        <span class="nav_text">
+                            Upload Beat
+                        </span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!---Header--->
+        <div class="ms_header">
+            <div class="ms_top_left">
+                <div class="ms_top_search">
+
+                    <form class="form-inline" method='GET' action="/search" autocomplete="off">
+
+                        <input type="text" class="form-control" name='q' id="q" value="{{ request.GET.q }}"placeholder="Search BeatStore..">
+                       <!--  <div class="ms_top_trend">
+                            <button type="submit" class="ms_btn">Search</button>
+                        </div> -->
+                    
+                    <!-- </form> -->
+                </div>
+                <div class="ms_top_trend">
+                    <button type="submit" class="ms_btn">Search</button>
+                
+                    </form>
+                </div>
+                
+            </div>
+            <div class="ms_top_right">
+                {% if request.user.is_authenticated %}
+                <div class="ms_top_lang">
+                    <a href="/logout/"><span data-toggle="modal" data-target="#lang_modal">Logout </span></a>
+                </div>
+                
+                <div class="ms_top_btn">
+                    <a href="/contact-us/" class="ms_btn reg_btn"><span>Contact Us</span></a>
+                    <a href="/profile/" class="ms_btn reg_btn"><span>Profile</span></a>
+                    <a href="/order-summary/" class="ms_btn reg_btn"><span>Cart {{ request.user|cart_item_count }}</span></a>
+                 </div>
+                {% else %}
+                <div class="ms_top_btn">
+                    <a href="/contact-us/" class="ms_btn reg_btn"><span>Contact Us</span></a>
+                    <a href="/signup" class="ms_btn reg_btn" ><span>register</span></a>
+                    <a href="/login" class="ms_btn login_btn"><span>login</span></a>
+                 </div>
+                 {% endif %}
+            </div>
+        </div>
+        {% block content %}
+
+
+
+
+
+        {% endblock %}
+        <!----Footer Start---->
+        <div class="ms_footer_wrapper">
+            <div class="ms_footer_logo">
+                <a href="index.html"><img src="images/open_logo.png" alt=""></a>
+            </div>
+            <div class="ms_footer_inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer_box">
+                            <img style="width: 80%" src="{% static 'core/images/artist/afbc.png' %}" alt="">
+                            <p>Afrobeat NG is home to many professionals who make good African music. You can sell Afro beats, buy Afro beats and We offer professional music making services here.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer_box footer_app">
+                            <h1 class="footer_title">About Us</h1>
+                            <p>We're a group of people passionate about bringing you the latest afro beats in the world..<br> Listen to your favourite songs at just one click. Download Now !</p>
+                            <a href="#" class="foo_app_btn"><img src="images/google_play.jpg" alt="" class="img-fluid"></a>
+                            <a href="#" class="foo_app_btn"><img src="images/app_store.jpg" alt="" class="img-fluid"></a>
+                            <a href="#" class="foo_app_btn"><img src="images/windows.jpg" alt="" class="img-fluid"></a>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-3 col-md-6">
+                        <div class="footer_box footer_contacts">
+                            <h1 class="footer_title"><a href="/contact-us">contact us</h1></a>
+                            <ul class="foo_con_info">
+                                <li>
+                                    <div class="foo_con_icon">
+                                        <img src="images/svg/phone.svg" alt="">
+                                    </div>
+                                    <div class="foo_con_data">
+                                        <span class="con-title">Call us :</span>
+                                        <span>(+1) 202-555-0176, (+1) 2025-5501</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="foo_con_icon">
+                                        <img src="images/svg/message.svg" alt="">
+                                    </div>
+                                    <div class="foo_con_data">
+                                        <span class="con-title">email us :</span>
+                                        <span><a href="#">demo@mail.com </a>, <a href="#">dummy@mail.com</a></span>
+                                    </div>
+                                </li>
+                            
+                            </ul>
+                            <div class="foo_sharing">
+                                <div class="share_title">follow us :</div>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----Copyright---->
+            <div class="col-lg-12">
+                <div class="ms_copyright">
+                    <div class="footer_border"></div>
+                    <p>Copyright &copy; 2020 <a href="#">Afro Beat</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!----Audio Player Section---->
+    <!----Register Modal Start---->
+    <!--Main js file Style-->
+    
+    <script type="text/javascript" src="{% static 'core/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/swiper/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/jplayer.playlist.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/jquery.jplayer.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/audio-player.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/player/volume.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/nice_select/jquery.nice-select.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/plugins/scroll/jquery.mCustomScrollbar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/custom.js' %}"></script>
+</body>
+
+</html>
+

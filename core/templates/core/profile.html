@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+
+<br>  
+<br>
+<br>   
+<br> 
+<br> 
+            <div class="ms_profile_wrapper">
+                <h1> Welcome back {{ user }}</h1>
+                <div class="ms_profile_box">
+                    <div class="ms_pro_form">
+                        <div class="form-group">
+                            <img  style="border-radius: 12px;" src="{{ user.profile.profile_pic.url }}" alt="" class="img-fluid">
+                        </div><br>
+                        <div class="form-group">
+                            <label>Full Name : {{ user.profile.full_name }}</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Aka : {{ user.username }}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Address : {{ user.profile.address }}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email : {{ user.profile.email }}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>City : {{ user.profile.city }}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>State : {{ user.profile.state }}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Country : {{ user.profile.country }}</label>
+                        </div>
+
+                       <div class="form-group">
+                            <label>Phone : {{ user.profile.phone }}</label>
+                        </div>
+
+                        <div style="padding-left: 5%; padding-top: 20px" class="form-group">
+                            <label>Skill : {{ user.profile.get_skill_display }}</label>
+                        </div> </center>
+                        <br>
+                        <br>
+                        
+                        {%if cash%}
+                        <a href="/contactprof-del/">Delete contact</a><br>
+                        {% else %}
+                        <p>Want to keep your contact secret and sell it to people taht are interested. Click <a href="/profile-contact/">here</a></p>
+                        <br>
+                        {% endif %}
+                        <!-- <a href="edit/">Edit Profile</a> -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+{% endblock %}

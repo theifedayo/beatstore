@@ -1,0 +1,27 @@
+
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+		<p style="color: white;">{% if ref %}
+			Your transaction reference is  <b>{{ref}}</b>
+			copy it and paste in the next page.
+			NOTE: Don't share with nobody
+			{% endif %}</p>
+
+		<div>
+			<a href="/payment/paystack/ref">Next Page</a>
+		</div>
+
+	
+
+</div>
+{% endblock %}

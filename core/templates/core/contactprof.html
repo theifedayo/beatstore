@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+
+<div class="ms_profile_wrapper">
+                <h1>Create Contact</h1>
+                
+                <div class="ms_profile_box">
+          
+                   <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                   		{%if message%}
+                    		<b style="color: red;">{{ message }}</b>
+                    	{% endif %}
+	                    <div class="ms_pro_form">
+	                    	<center>
+
+		                        <div class="form-group">
+
+		                            <label>Comapny Name *</label>
+		                            <input type="text" placeholder="Company Name" name="company_name" id="company_name" class="form-control" required="True">
+		               			</div>
+		               		</center>
+		               		<center>
+		                        <div class="form-group">
+		                            <label>Price*</label>
+		                           	<input type="text" placeholder="Price" name="price" id="price" class="form-control" required="True">
+		                           	<b>Figure entered is in naira</b>
+		                        </div>
+		                    </center>
+	                     
+
+	                    
+	                        <div class="pro-form-btn text-center marger_top15">
+	                            <button style="border-radius: 12px; width: 120px; background: white;"value="submit">Submit</button>
+	                        </div>
+	                    </div>
+                	</form>
+                </div>
+            </div>
+
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+  {% block content %}
+
+<form method="POST">{% csrf_token %}
+</br>
+		<div class="ms_profile_wrapper">
+                <h1>Withdrawal Form</h1>
+                <div class="ms_profile_box">
+                    {% if message %}
+                        <b>{{ message }}</b>
+                    {% endif %}
+					<div class="ms_pro_form">
+						<div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="Full Name" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Email" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Name</label>
+                            <input type="text" name="bank_name" placeholder="Bank Name" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" name="amount" placeholder="Amount" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Account Number</label>
+                            <input type="text" name="account_number" placeholder="Account Number" class="form-control" required="True">
+                        </div>
+
+                        
+
+                        <div class="pro-form-btn text-center marger_top15">
+					
+                            <button class="ms_btn" type="submit">Withdraw</button> 
+						</div>
+
+                    </div>
+                </div>
+            </div>
+   </form>
+     {% endblock %}

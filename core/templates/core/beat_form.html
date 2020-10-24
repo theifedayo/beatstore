@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+
+<div class="ms_profile_wrapper">
+                <h1>Upload Beat</h1>
+                
+                <div class="ms_profile_box">
+          
+                   <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="ms_pro_form">
+                        <div class="form-group">
+                            <label>Beat Name *</label>
+                            <input type="text" placeholder="" name="beat_name" value="{{ instance.beat_name }}" id="beat_name" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Beat *</label>
+                            <input type="file"  value="{{ instance.sound.url }}" name="sound" id="sound" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Thumbnail *</label>
+                            <input type="file"  value="{{ instance.thumbnail.url }}" name="thumbnail" id="thumbnail" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>License*</label>
+                            <textarea name="license" id="license" style="border-radius: 8px;" cols="30" rows="5">{{ instance.license }}</textarea>
+
+                        </div>
+
+                        <label for="genre1">Genre:</label>
+						  <select name="genre1" id="genre1">
+						    <option value="{{ instance.get_genre1_display }}">{{ instance.get_genre1_display }}</option>
+						    <option value="Cl">Club</option>
+						    <option value="DS">Dirty South</option>
+						    <option value="EC">East Coast</option>
+						    <option value="G">Gangsta</option>
+						    <option value="P">Pop</option>
+						    <option value="RB">R&B</option>
+						    <option value="U">Underground</option>
+						    <option value="Ur">Urban</option>
+						    <option value="WC">West Coast</option>
+						  </select>
+
+
+						<label for="mood">Mood:</label>
+						  <select name="mood1" id="mood1">
+						    <option value="{{ instance.get_mood1_display }}">{{ instance.get_mood1_display }}</option>
+						    <option value="A">Angry</option>
+						    <option value="D">Dark</option>
+						    <option value="E">Epic</option>
+						    <option value="F">Frantic</option>
+						    <option value="H">Happy</option>
+						    <option value="I">Inspiring</option>
+						    <option value="R">Relaxed</option>
+						    <option value="S">Sad</option>
+						    <option value="Si">Silly</option>
+						    <option value="So">Soulful</option>
+						  </select>
+
+						<label for="mood">Mood II:</label>
+						  <select name="mood2" id="mood2">
+						    <option value="{{ instance.get_mood2_display }}">{{ instance.get_mood2_display }}</option>
+						    <option value="A">Angry</option>
+						    <option value="D">Dark</option>
+						    <option value="E">Epic</option>
+						    <option value="F">Frantic</option>
+						    <option value="H">Happy</option>
+						    <option value="I">Inspiring</option>
+						    <option value="R">Relaxed</option>
+						    <option value="S">Sad</option>
+						    <option value="Si">Silly</option>
+						    <option value="So">Soulful</option>
+						  </select>
+
+						<div class="form-group">
+                            <label>Price *</label>
+                            <input type="text" placeholder="" name="price" value="{{ instance.price }}" id="beat_name" class="form-control" required="True">
+                        </div>
+
+                    
+                        <div class="pro-form-btn text-center marger_top15">
+                            <button style="border-radius: 12px; width: 120px; background: white;"value="submit">Upload</button>
+                        </div>
+                    </div>
+                	</form>
+                </div>
+            </div>
+
+
+
+{% endblock %}

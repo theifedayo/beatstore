@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="ms_weekly_wrapper" >
+                <div class="ms_weekly_inner">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ms_heading">
+                                <h1 style="margin-left: 105px;">Pop Beats</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 padding_right40" style="padding-left: 55px;">
+ 
+                           {%for obj in beat %}
+                
+                            <div class="ms_weekly_box">
+                                <div class="weekly_left">
+                                    <span class="w_top_no">
+                                        {{ forloop.counter }}
+                                    </span>
+                                    <div class="w_top_song">
+                                        <div class="w_tp_song_img">
+                                            <img  style="width: 400%" src="{{ obj.thumbnail.url }}" alt="" class="img-fluid">
+                                            <div class="ms_song_overlay">
+                                            </div>
+                                            <div class="ms_play_icon">
+                                                <img src="images/svg/play.svg" alt="">
+                                            </div>
+
+                                        </div>
+                                        <div class="w_tp_song_name">
+                                            <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a></h3>
+                                            <p>Genre : {{ obj.get_genre1_display }}</p>
+                                            <p>Mood : {{ obj.get_mood1_display }}, {{ obj.get_mood2_display }}</p>
+                                            <p>Price : #{{ obj.price }}</p>
+                                            <p><a href="/{{ obj.slug }}/license">Add to cart</a></p>
+                                            <audio controls>
+                                                <source src="{{ obj.sound_two.url }}" type="audio/mpeg">
+                                            </audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weekly_right">
+                                    <span class="w_song_time">0:15</span>
+                                    <span class="ms_more_icon" data-other="1">
+                                        <img src="images/svg/more1.svg" alt="">                                 
+                                    </span>
+                                </div>
+                                <ul class="more_option">
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                                </ul>
+                            </div>
+                            <div class="ms_divider"></div>
+                        {% endfor %}
+
+                            <!--  -->
+                        </div>
+                        <!-- -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+						
+
+{% endblock %}

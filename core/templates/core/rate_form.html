@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div style="padding-top: 80px" class="ms_profile_wrapper">
+	{% if message %}
+		<b>{{ message}}</b>
+	{% endif %}
+	<form method="POST" autocomplete="off">{% csrf_token %}
+		<div class="form-group">
+			 <div class="ms_profile_box">
+				<div class="ms_pro_form">
+            		<label>Rate me</label>
+            		<center> <input type="text" style="width: 280px;" name="rate" placeholder="0 - 5" class="form-control"> </center>
+        		</div>
+        			<div style="padding-top: 20px">
+        				<button class="ms_btn" type="submit"> Submit </button> 
+        			</div>
+        	</div>
+        </div>
+
+	</br>
+	</form>
+</div>
+{% endblock %}

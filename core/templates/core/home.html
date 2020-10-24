@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="container">
+
+	<div class="card">
+		<h1>Available Beats</h1><hr>
+	        <div class="card-body">
+
+				{% for beat in beats %}
+				<image src="{{ beat.thumbnail.url }}" width='30%' height="30%"/>
+				<h4 style="text-align: center;margin-top: -2rem;"><b>{{ beat.beat_name }}</b></h4>
+				<audio controls>
+				    <source src="{{ beat.sound_two.url }}" type="audio/mpeg">
+				</audio><b><a href="{{ beat.slug }}/license">Buy Beat   </a>      #{{ beat.price }}</b>   
+				<div><small><b>Genre:</b>  {{ beat.get_genre1_display }}, {{ beat.get_genre2_display }}
+				</small></div>
+				<small><b>Mood:</b>  {{ beat.get_mood1_display }}, {{ beat.get_mood2_display }}
+					
+				</small>
+				<div><small>{{ beat.timestamp }}</small></div><hr>
+
+				{% endfor %}
+
+			</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<form method="POST" enctype='multipart/form-data'>
+</br>
+		<div class="ms_profile_wrapper">
+                <h1>Sign Up</h1>
+                <div class="ms_profile_box">
+
+                    <div class="ms_pro_form">
+                        <div class="form-group">
+                            <label>Profile Picture *</label>
+                            <input type="file" name="profile_pic" id="profile_pic" class="form-control" required="True">
+                        </div>
+
+                    	<div class="form-group">
+                            {% if name_exists%}
+                                <b style="color: red">{{ name_exists }}</b><br>
+                            {% endif %}
+                            <label>Username</label>
+                            <input type="text" name="username" placeholder="Username" class="form-control" required="True">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Full name *</label>
+                            <input type="text" name="full_name" placeholder="Bella Scott" class="form-control" required="True">
+                        </div>
+                        <div class="form-group">
+                            {% if email_error %}
+                                <b style="color: red"> {{ email_error }}</b><br>
+                            {% endif %}
+                            <label>Your Email *</label>
+                            <input type="email" name="email" placeholder="bella.scott@dummymail.com" class="form-control" required="True">
+                        </div>
+                         <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="address" placeholder="3, Olokun Street, London" class="form-control" required="True">
+                        </div>
+
+                         <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" placeholder="London" class="form-control" required="True">
+                        </div>
+
+                         <div class="form-group">
+                            <label>State</label>
+                            <input type="text" name="state" placeholder="Quebec" class="form-control" required="True">
+                        </div>
+
+                         <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" name="country" placeholder="United Kingdom" class="form-control" required="True">
+                        </div>
+
+                         <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" placeholder="Phone Number" class="form-control" required="True">
+                        </div><br>
+                        <div class="form-group">
+                            <label for="skill">Skill:</label>
+                              <select name="skill" id="skill">
+                                <option value="{{ instance.get_skill_display }}">{{ instance.get_skill_display }}</option>
+                                <option value="m">Musician</option>
+                                <option value="p">Producer</option>
+                                <option value="ma">Manager</option>
+                                <option value="pro">PRO</option>
+                                <option value="co">Compose</option>
+                                <option value="sw">Songwriter</option>
+                                <option value="lb">Label brand & Sponsor</option>
+                                <option value="di">Director</option>
+                                <option value="mo">Model</option>
+                                <option value="pa">Painter</option>
+                                <option value="st">Stylist</option>
+                                <option value="ac">Actor</option>
+                                <option value="me">Media</option>
+                                <option value="de">Designer</option>
+                                <option value="pg">Photographer</option>
+                                <option value="pt">Poet</option>
+                                <option value="bd">Band</option>
+                                <option value="tc">Teacher</option>
+                                <option value="dc">Dancer</option>
+                                <option value="cm">Comedian</option>
+                                <option value="so">Show Organizers</option>
+                              </select>
+                        </div>
+
+                        <div class="form-group">
+                            {% if not_the_same_password %}
+                                <b style="color: red">{{ not_the_same_password }}</b><br>
+                            {% endif %}
+                            {% if too_short %}
+                                <b style="color: red">{{ too_short }}</b><br>
+                            {% endif %}
+                            <label>Your Password *</label>
+                            <input type="password" placeholder="******" class="form-control" name="password1" required="True">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password *</label>
+                            <input type="password" placeholder="******" class="form-control" name="password2" required="True">
+                        </div>
+                        <div class="pro-form-btn text-center marger_top15">
+
+                        	{% csrf_token %}
+                            <button class="ms_btn" type="submit">  Signup </button> 
+                            
+          					<p>Already have an account? <a href="/login">Login Here</a></p>
+          				</div>
+                    </div>
+                </div>
+            </div>
+   </form>
+
+{% endblock %}

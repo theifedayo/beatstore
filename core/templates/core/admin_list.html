@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+			
+                   <h1 class="footer_title">All Beats</h1>
+	{% for obj in beats %}
+
+		<div>
+			<p><a href="/admin-list/{{ obj.slug }}">{{ obj.beat_name }}</a> was uploaded by {{ obj.user }} at {{ obj.timestamp }} - Verification status: {{ obj.verified }}</p><hr>
+		</div>
+	{% endfor %}
+	</div>
+{% endif %}
+
+
+
+{% endblock %}
