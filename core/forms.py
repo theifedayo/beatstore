@@ -103,7 +103,7 @@ class RateForm(forms.ModelForm):
 class BeatForm(forms.ModelForm):
     class Meta:
         model = Beat
-        fields = ['beat_name','sound', 'license', 'genre1', 'mood1', 'mood2', 'price', 'thumbnail']
+        fields = ['beat_name','sound', 'license', 'genre1', 'mood1', 'price', 'thumbnail']
 
 class PaystackForm(forms.Form):
     email = forms.EmailField()

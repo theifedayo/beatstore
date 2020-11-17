@@ -427,9 +427,9 @@ Purchase:
 
                                         </div>
                                         <div class="w_tp_song_name">
-                                            <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a></h3>
+                                            <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a><small>by {{ obj.producer_name }}</small></h3>
                                             <p>Genre : {{ obj.get_genre1_display }}</p>
-                                            <p>Mood : {{ obj.get_mood1_display }}, {{ obj.get_mood2_display }}</p>
+                                            <p>Mood : {{ obj.get_mood1_display }}</p>
                                             <p>Price : &#8358 {{ obj.price }}</p>
 
                                             <p><a href="{{ obj.slug }}/license">Add to cart</a></p>
@@ -495,7 +495,7 @@ Purchase:
                                         <div class="w_tp_song_name">
                                             <h3><a href="{{ obj.sound_two.url}}" target="_blank">{{ obj.beat_name }}</a></h3>
                                             <p>Genre : {{ obj.get_genre1_display }}</p>
-                                            <p>Mood : {{ obj.get_mood1_display }}, {{ obj.get_mood2_display }}</p>
+                                            <p>Mood : {{ obj.get_mood1_display }}</p>
                                             <p>Price : &#8358 {{ obj.price }}</p>
                                             <p><a href="{{ obj.slug }}/license">Add to cart</a></p>
                                             <audio controls>

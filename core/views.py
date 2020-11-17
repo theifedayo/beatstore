@@ -236,7 +236,7 @@ def beat_form_view(request):
             obj = beat_form.save(commit=False)
             csrf_slug = request.POST.get('csrfmiddlewaretoken')
             obj.slug = csrf_slug[:20:-2]
-            obj.beat_id = a
+            obj.producer_name = request.user.username
             obj.user = request.user
             naira = beat_form.save()
             naira.refresh_from_db()

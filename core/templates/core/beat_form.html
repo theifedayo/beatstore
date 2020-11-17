@@ -19,20 +19,20 @@
                         <div class="form-group">
                             <label>Beat Name *</label>
                             <input type="text" placeholder="" name="beat_name" value="{{ instance.beat_name }}" id="beat_name" class="form-control" required="True">
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <label>Beat *</label>
                             <input type="file"  value="{{ instance.sound.url }}" name="sound" id="sound" class="form-control" required="True">
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <label>Thumbnail *</label>
                             <input type="file"  value="{{ instance.thumbnail.url }}" name="thumbnail" id="thumbnail" class="form-control" required="True">
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <label>License*</label>
                             <textarea name="license" id="license" style="border-radius: 8px;" cols="30" rows="5">{{ instance.license }}</textarea>
 
-                        </div>
+                        </div><br>
 
                         <label for="genre1">Genre:</label>
 						  <select name="genre1" id="genre1">
@@ -62,22 +62,7 @@
 						    <option value="S">Sad</option>
 						    <option value="Si">Silly</option>
 						    <option value="So">Soulful</option>
-						  </select>
-
-						<label for="mood">Mood II:</label>
-						  <select name="mood2" id="mood2">
-						    <option value="{{ instance.get_mood2_display }}">{{ instance.get_mood2_display }}</option>
-						    <option value="A">Angry</option>
-						    <option value="D">Dark</option>
-						    <option value="E">Epic</option>
-						    <option value="F">Frantic</option>
-						    <option value="H">Happy</option>
-						    <option value="I">Inspiring</option>
-						    <option value="R">Relaxed</option>
-						    <option value="S">Sad</option>
-						    <option value="Si">Silly</option>
-						    <option value="So">Soulful</option>
-						  </select>
+						  </select><br>
 
 						<div class="form-group">
                             <label>Price *</label>
