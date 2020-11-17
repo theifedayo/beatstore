@@ -28,6 +28,8 @@ import stripe
 import requests
 import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import yagmail
+
 
 
 
@@ -212,6 +214,17 @@ def results(request):
     return render(request, template_name, context)
 
 
+def results_prof(request):
+    template_name = 'core/results_prof.html'
+    query = request.GET.get('q')
+    profile = Profile.objects.filter(Q(skill__icontains=query))
+    context = {
+        "profile":profile,
+        "query": query
+    }
+    return render(request, template_name, context)
+
+
 @login_required
 def beat_form_view(request):
     i = Beat.objects.all()
@@ -280,6 +293,15 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
+            yag = yagmail.SMTP("afrobeat1236@gmail.com", "afrobeat2020")
+
+            html_msg = """
+
+            <p><h4>You have successfuly created your AfroBeat Account
+                Thank you for signing up on Afro Beat.</h4></p>
+            """
+
+            yag.send(request.user.email, "Welcome to AfroBeat NG", html_msg)
             return redirect('/')
         else:
             #Error messages for username
@@ -312,6 +334,16 @@ def signup(request):
     else:
         form = SignUpForm()
         return render(request, 'core/signup.html', {'form':form}) 
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1346,6 +1378,7 @@ def withdraw_contact(request):
     my_cash = ContactCash.objects.filter(user=request.user) 
     for a in my_cash:
         total = a.cash
+    total = int(total-(0.3*total))
     form = WithdrawForm(request.POST or None)
     if form.is_valid():
         amount = int(request.POST.get('amount'))

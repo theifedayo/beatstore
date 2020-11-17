@@ -6,6 +6,7 @@ from django.views.static import serve
 from django.conf.urls import url
 from core import views
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import views as auth_views
 from .views import (
     CheckoutView,
     PaymentView)
@@ -38,6 +39,7 @@ urlpatterns = [
     path('profile-contact/', views.contactprof_view, name='contact-prof-view'),
     path('contactprof-del/', views.contactprof_delete, name='contactprof_del'),
     path('search/', views.results, name='results'),
+    path('searchq/', views.results_prof, name='results-prof'),
     path('order-summary/', views.order_summary, name='order-summary'),
     path('add-to-cart/<str:slug>/', views.add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<slug>/', views.remove_from_cart, name='remove-from-cart'),
@@ -68,7 +70,17 @@ urlpatterns = [
     path('paystack/connect/ref', views.otp_page_prof, name="otp-page-prof"),
     path('payment/paystack/phone', views.phone_page, name="phone-page"),
     path('paystack/connect/phone', views.phone_page_prof, name="phone-page-prof"),
+
+
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="core/password_reset.html"), name="reset_password"),
+    #path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name="core/password_reset_sent.html"), name="password_reset_done"),
+    #path('password_reset_confirm/', auth_views.PasswordResetConfirmView.as_view(template_name="core.password_reset_confirm.html"), name="password_reset_confirm"),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name="core/password_reset_complete.html"), name="password_reset_complete")
+
 ]
+
+
+# password_reset_confirm/<uidb64>[0-9A-Za-z_\-]/<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/
 
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

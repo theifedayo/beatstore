@@ -163,3 +163,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ACCOUNT_FORMS = { 
 'signup': 'core.forms.CustomSignupForm', 
 } 
+
+
+#EMAIL SETTINGS
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'afrobeat1236@gmail.com'
+EMAIL_HOST_PASSWORD= 'afrobeat2020'
+EMAIL_PORT = 587

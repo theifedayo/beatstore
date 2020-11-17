@@ -117,6 +117,7 @@ class OrderContactProf(models.Model):
 class Beat(models.Model):
     user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
     slug = models.SlugField(unique=True, blank=False)
+    producer_name = models.CharField(max_length=45)
     beat_name = models.CharField(max_length=40)
     beat_id = models.CharField(max_length=33, blank=False, null=False, unique=True)
     sound = models.FileField()
