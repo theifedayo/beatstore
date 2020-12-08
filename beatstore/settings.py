@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+     'django_bitcoin',
     
 
     'core',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
   
 ]
+BITCOIND_CONNECTION_STRING = "http://bitcoinuser:password@localhost:8332"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
