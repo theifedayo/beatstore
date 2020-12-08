@@ -55,6 +55,8 @@ INSTALLED_APPS = [
   
 ]
 BITCOIND_CONNECTION_STRING = "http://bitcoinuser:password@localhost:8332"
+BITCOIN_TRANSACTION_SIGNALING = True
+* * * * * (cd $APP_PATH && python manage.py python manage.py CheckTransactions >> $APP_PATH/logs/email_sends.log 2>&1)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
