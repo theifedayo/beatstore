@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_countries.fields import CountryField
+from django_bitcoin.models import balance_changed, balance_changed_confirmed
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -269,6 +271,16 @@ class Cash(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cash = models.IntegerField()
+@receiver(balance_changed)
+def balance_changed_handler(sender, **kwargs):
+    pass
+    # try:
+    # print "balance changed", sender.id, kwargs["changed"], sender.total_balance()
+
+
+@receiver(balance_changed_confirmed)
+def balance_changed_confirmed_handler(sender, **kwargs):
+    pass
 
 
 class ContactCash(models.Model):
